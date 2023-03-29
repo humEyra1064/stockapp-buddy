@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { Formik, Form } from "formik"
 import TextField from "@mui/material/TextField"
 import { object, string } from "yup";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 
 
@@ -97,6 +98,11 @@ const Login = () => {
                      id="password"
                      type="password"
                      variant="outlined"
+                     value={values?.password || ""}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    error={touched.password && Boolean(errors.password)}
+                    helperText={touched.password && errors.password}
                      
                    />
  
