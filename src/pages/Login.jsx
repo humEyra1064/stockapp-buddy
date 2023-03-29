@@ -16,7 +16,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { currentUser, error } = useSelector((state) => state?.auth);
+  const { currentUser, error,loading } = useSelector((state) => state?.auth);
 
   const loginScheme =object({
     email: string()
@@ -105,7 +105,9 @@ const Login = () => {
                     helperText={touched.password && errors.password}
                      
                    />
- 
+                <LoadingButton type="submit" variant="contained" loading={loading}>
+                  Submit
+                </LoadingButton>
                    
                  </Box>
              </Form>)
