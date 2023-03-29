@@ -21,6 +21,14 @@ const Login = () => {
     email: string()
       .email("Lutfen valid bir email giriniz")
       .required("Email zorunludur"),
+      password: string()
+      .required("password zorunludur")
+      .min(8, "password en az 8 karakter olmalıdır")
+      .max(20, "password en fazla 20 karakter olmalıdır")
+      .matches(/\d+/, "Password bir sayı içermelidir")
+      .matches(/[a-z]/, "Password bir küçük harf içermelidir")
+      .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
+      .matches(/[!,?{}><%&$#£+-.]+/, "Password bir özel karakter içermelidir"),
 
   })
 
