@@ -11,13 +11,14 @@ import { Formik, Form } from "formik"
 import TextField from "@mui/material/TextField"
 import { object, string } from "yup";
 import LoadingButton from '@mui/lab/LoadingButton';
-import { login } from "../apiCall/useAuthCall";
+import useAuthCall from "../hooks/useAuthCall";
 
 
 
 const Login = () => {
   const navigate = useNavigate();
   const { currentUser, error,loading } = useSelector((state) => state?.auth);
+  const {login} = useAuthCall()
 
   const loginScheme =object({
     email: string()
