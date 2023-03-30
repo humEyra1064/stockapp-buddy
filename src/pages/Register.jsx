@@ -4,17 +4,40 @@ import Avatar from "@mui/material/Avatar";
 import LockIcon from "@mui/icons-material/Lock";
 import image from "../assets/result.svg";
 import Grid from "@mui/material/Grid";
-
-
 import { Link, useNavigate } from "react-router-dom";
 import { Box, TextField } from "@mui/material";
 import { useSelector } from "react-redux";
 import { LoadingButton } from "@mui/lab";
 import { Form, Formik } from "formik";
+import { object, string } from "yup";
 
 const Register = () => {
   const navigate = useNavigate();
   const { currentUser, error } = useSelector((state) => state.auth);
+
+  const registerScheme =object({
+    first_name: string()
+      .required("Ad zorunludur")
+      .max(20, "Ad en fazla 20 karakter olmalıdır"),
+    last_name: string()
+      .required("Soyad zorunludur")
+      .max(20, "Soyad en fazla 20 karakter olmalıdır"),
+    username: string()
+      .required("Kullanıcı adı zorunludur")
+      .max(20, "Kullanıcı adı en fazla 20 karakter olmalıdır"),
+      email: string()
+      .email("Lutfen valid bir email giriniz")
+      .required("Email zorunludur"),
+      password: string()
+      .required("password zorunludur")
+      .min(8, "password en az 8 karakter olmalıdır")
+      .max(20, "password en fazla 20 karakter olmalıdır")
+      .matches(/\d+/, "Password bir sayı içermelidir")
+      .matches(/[a-z]/, "Password bir küçük harf içermelidir")
+      .matches(/[A-Z]/, "Password bir büyük harf içermelidir")
+      .matches(/[!,?{}><%&$#£+-.]+/, "Password bir özel karakter içermelidir"),
+
+  });
 
   return (
     <Container maxWidth="lg">
@@ -56,7 +79,7 @@ const Register = () => {
 
           <Formik
           initialValues={{email:"" ,password:"",first_name:"",last_name:"", username:""}}
-          // validationSchema={loginScheme}
+          validationSchema={registerScheme}
           onSubmit={(values,actions)=>{
             // login(values)
             actions.resetForm();

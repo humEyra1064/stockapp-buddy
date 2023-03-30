@@ -7,6 +7,7 @@ const useAuthCall = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    
  const login = async(userInfo)=>{
     
     const BASE_URL = "https://12125.fullstack.clarusway.com/"
