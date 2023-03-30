@@ -11,6 +11,7 @@ import { Formik, Form } from "formik"
 import TextField from "@mui/material/TextField"
 import { object, string } from "yup";
 import LoadingButton from '@mui/lab/LoadingButton';
+import { login } from "../apiCall/useAuthCall";
 
 
 
@@ -73,6 +74,7 @@ const Login = () => {
           initialValues={{email:"" ,password:""}}
           validationSchema={loginScheme}
           onSubmit={(values,actions)=>{
+            login(values)
             actions.resetForm();
             actions.setSubmitting(false);
           }}
