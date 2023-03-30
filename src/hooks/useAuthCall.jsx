@@ -8,9 +8,9 @@ const useAuthCall = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const BASE_URL = "https://12125.fullstack.clarusway.com/"
  const login = async(userInfo)=>{
     
-    const BASE_URL = "https://12125.fullstack.clarusway.com/"
    dispatch(fetchStart())
     try {
          const {data} = await axios.post(`${BASE_URL}account/auth/login/`,userInfo)
@@ -27,7 +27,7 @@ const useAuthCall = () => {
 }
  const register = async(userInfo)=>{
     
-    const BASE_URL = "https://12125.fullstack.clarusway.com/"
+
    dispatch(fetchStart())
     try {
          const {data} = await axios.post(`${BASE_URL}account/register/`,userInfo)
@@ -44,11 +44,11 @@ const useAuthCall = () => {
 }
  const logout = async()=>{
     
-    const BASE_URL = "https://12125.fullstack.clarusway.com/"
+    
    dispatch(fetchStart())
     try {
          const {data} = await axios.post(`${BASE_URL}account/auth/logout/`)
-         dispatch(logoutSuccess(data))
+         dispatch(logoutSuccess())
          navigate("/")
          console.log(data)
          return data
