@@ -87,6 +87,7 @@ const Register = () => {
             actions.resetForm();
             actions.setSubmitting(false);
           }}
+         
           >
           { ({values,handleChange,handleBlur,errors,touched})=>{
             return(<Form>
