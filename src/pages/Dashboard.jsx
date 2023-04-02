@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { Button } from '@mui/material';
 import useAuthCall from '../hooks/useAuthCall';
 import { Outlet } from 'react-router-dom';
+import { blueGrey } from '@mui/material/colors';
 
 
 const drawerWidth = 200;
@@ -85,7 +86,7 @@ function Dashboard(props) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth ,backgroundColor:blueGrey[900],color:"white"},
           }}
         >
           {drawer}
@@ -94,7 +95,7 @@ function Dashboard(props) {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, backgroundColor:blueGrey[900],color:"white"},
           }}
           open
         >

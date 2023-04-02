@@ -60,7 +60,7 @@ const MenuListItems = () => {
             
           {item.url.includes("http") && ( 
              <ListItemButton to={item.url}>
-              <ListItemIcon>
+              <ListItemIcon sx={{color:"white"}}>
                {item.icon}
               </ListItemIcon>
               <ListItemText primary={item.title} />
@@ -68,7 +68,7 @@ const MenuListItems = () => {
 
           {!item.url.includes("http") && ( 
              <ListItemButton onClick={()=>navigate(item.url)}>
-              <ListItemIcon>
+              <ListItemIcon sx={{color:"white"}}>
                {item.icon}
               </ListItemIcon>
               <ListItemText primary={item.title} />
