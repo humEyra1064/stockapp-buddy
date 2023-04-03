@@ -25,12 +25,12 @@ const { token } = useSelector((state) => state.auth)
     }
   }
   const deleteStockData = async (url,id) => {
-    const BASE_URL = "https://12125.fullstack.clarusway.com/"
+    // const BASE_URL = "https://12125.fullstack.clarusway.com/"
     dispatch(fetchStart())
  
     try {
-       await axios.delete(`${BASE_URL}stock/${url}/${id}/`, {
-        headers: { Authorization: `Token ${token}` },
+       await axiosWithToken.delete(`stock/${url}/${id}/`, {
+        // headers: { Authorization: `Token ${token}` },
       })
       getStockData(url)
     } catch (error) {
