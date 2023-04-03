@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline"
 import EditIcon from "@mui/icons-material/Edit"
+import { btnStyle, flex } from '../styles/globalStyle';
 
 export default function FirmCard({firm}) {
   return (
@@ -38,9 +39,9 @@ export default function FirmCard({firm}) {
          {firm?.phone}
         </Typography>
 
-      <CardActions>
-   <EditIcon/>
-    <DeleteOutlineIcon/>
+      <CardActions sx={flex}>
+   <EditIcon sx={btnStyle}/>
+    <DeleteOutlineIcon sx={btnStyle}/>
     </CardActions>
 
     </Card>

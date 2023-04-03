@@ -41,7 +41,7 @@ const Firms = () => {
         Firm
       </Typography>
       <Button variant="contained">New Firm</Button>
-<Grid container >
+<Grid container  >
   {firms?.map((firm)=>(
     <Grid item key={firm.id}>
       <FirmCard firm={firm}/>
