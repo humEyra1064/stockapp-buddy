@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice"
 import axios from "axios"
 import useAxios from "./useAxios"
+import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify"
 
 const useStockCall = () => {
 const { token } = useSelector((state) => state.auth)
@@ -29,13 +30,14 @@ const { token } = useSelector((state) => state.auth)
     dispatch(fetchStart())
  
     try {
-       await axiosWithToken.delete(`stock/${url}/${id}/`, {
-        // headers: { Authorization: `Token ${token}` },
-      })
+        await axiosWithToken.delete(`stock/${url}/${id}/`)
+        toastSuccessNotify(`${url} successfuly deleted`)
+      
       getStockData(url)
     } catch (error) {
       console.log(error)
       dispatch(fetchFail())
+      toastErrorNotify(`${url} can not be deleted`)
     }
   }
 
