@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchFail, fetchStart, getSuccess } from "../features/stockSlice"
 import useStockCall from "../hooks/useStockCall"
+import FirmCard from "../components/FirmCard"
 
 
 const Firms = () => {
@@ -43,6 +44,7 @@ const Firms = () => {
 <Grid container >
   {firms?.map((firm)=>(
     <Grid item key={firm.id}>
+      <FirmCard firm={firm}/>
 
     </Grid>
   ))}
