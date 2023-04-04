@@ -55,7 +55,20 @@ const { token } = useSelector((state) => state.auth)
     }
   }
 
-  return {getStockData ,deleteStockData}
+  const putStockData = async (url, info) => {
+    dispatch(fetchStart())
+    try {
+      await axiosWithToken.put(`stock/${url}/${info.id}/`, info)
+      toastSuccessNotify(`${url} successfuly updated`)
+      getStockData(url)
+    } catch (error) {
+      console.log(error)
+      dispatch(fetchFail())
+      toastErrorNotify(`${url} can not be updated`)
+    }
+  }
+
+  return {getStockData ,deleteStockData, postStockData ,putStockData}
 }
 
 export default useStockCall

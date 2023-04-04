@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import { modalStyle } from '../../styles/globalStyle';
 import { TextField } from '@mui/material';
 import { useState } from 'react';
+import useStockCall from '../../hooks/useStockCall';
 
 const style = {
   position: 'absolute',
@@ -19,16 +20,30 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({open,handleClose}) {
-    const [info, setInfo] = useState({
-        name:"",
-        phone:"",
-        address:"",
-        image:"",
-    })
+export default function FirmModal({open,handleClose ,info ,setInfo,putStockData}) {
+    // const [info, setInfo] = useState({
+    //     name:"",
+    //     phone:"",
+    //     address:"",
+    //     image:"",
+    // })
+    const {postStockData} = useStockCall()
+
  const handleChange=(e)=>{
     const { name, value } = e.target
     setInfo({ ...info, [name]: value })
+ }
+
+ const handleSubmit=(e)=>{
+  e.preventDefault()
+  if(info.id){
+    putStockData("firms" , info)
+  }else{
+      postStockData("firms" , info)
+  }
+
+  handleClose()
+  setInfo({name:"",phone:"",address:"",image:""})
  }
 
   return (
@@ -41,7 +56,9 @@ export default function FirmModal({open,handleClose}) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={modalStyle}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+         component="form"
+          onSubmit={handleSubmit}>
              <TextField
                label="Firm Name"
                name="name"
@@ -83,7 +100,7 @@ export default function FirmModal({open,handleClose}) {
                onChange={handleChange}
             />  
 
-               <Button type="submit" variant="contained">
+               <Button type="submit" variant="contained" >
               Submit Firm
             </Button>
 
