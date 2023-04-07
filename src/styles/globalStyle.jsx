@@ -20,3 +20,16 @@ export const btnStyle = {
     boxShadow: 24,
     p: 4,
   }
+
+  export const flexCenter = {
+    display: "flex",
+    flexDirection: { xs: "column", sm: "row" },
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 2,
+  }
+  export const flexColumn = {
+    display: "flex",
+    flexDirection: "column",
+    gap: 2,
+  }
