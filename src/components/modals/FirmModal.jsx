@@ -20,7 +20,7 @@ const style = {
   p: 4,
 };
 
-export default function FirmModal({open,handleClose ,info ,setInfo,putStockData}) {
+export default function FirmModal({open,handleClose ,info ,setInfo}) {
     // const [info, setInfo] = useState({
     //     name:"",
     //     phone:"",
@@ -28,6 +28,7 @@ export default function FirmModal({open,handleClose ,info ,setInfo,putStockData}
     //     image:"",
     // })
     const {postStockData} = useStockCall()
+    const {putStockData} = useStockCall()
 
  const handleChange=(e)=>{
     const { name, value } = e.target
@@ -35,7 +36,7 @@ export default function FirmModal({open,handleClose ,info ,setInfo,putStockData}
  }
 
  const handleSubmit=(e)=>{
-  e.preventDefault()
+  e.preventDefault();
   if(info.id){
     putStockData("firms" , info)
   }else{
@@ -51,7 +52,10 @@ export default function FirmModal({open,handleClose ,info ,setInfo,putStockData}
       
       <Modal
         open={open}
-        onClose={handleClose}
+        onClose={()=>{
+          handleClose()
+          setInfo({name:"",phone:"",address:"",image:""})
+        }}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
