@@ -10,7 +10,7 @@ import EditIcon from "@mui/icons-material/Edit"
 import { btnStyle, flex } from '../styles/globalStyle';
 import useStockCall from '../hooks/useStockCall';
 
-export default function ProductCard({firm,setOpen,info ,setInfo}) {
+export default function ProductCard({product,setOpen,info ,setInfo}) {
     const {deleteStockData}=useStockCall()
   return (
     <Card  sx={{
@@ -25,29 +25,29 @@ export default function ProductCard({firm,setOpen,info ,setInfo}) {
      
       <CardContent sx={{height:"150px"}}>
         <Typography gutterBottom variant="h5" component="div">
-          {firm?.name}
+          {product?.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-         {firm?.address}
+         {product?.address}
         </Typography>
       </CardContent>
 
       <CardMedia
         
-        alt="firm-image"
+        alt="product-image"
      sx={{p:1 ,objectFit:"contain",height:"130px"}}
-        image={firm?.image}
+        image={product?.image}
       />
 <Typography variant="body2" color="text.secondary">
-         {firm?.phone}
+         {product?.phone}
         </Typography>
 
       <CardActions sx={flex}>
    <EditIcon sx={btnStyle} onClick={()=>{
     setOpen(true)
-    setInfo(firm)
+    setInfo(product)
   }}/>
-    <DeleteOutlineIcon sx={btnStyle} onClick={()=>deleteStockData("products",firm.id)}/>
+    <DeleteOutlineIcon sx={btnStyle} onClick={()=>deleteStockData("products",product.id)}/>
     </CardActions>
 
     </Card>
