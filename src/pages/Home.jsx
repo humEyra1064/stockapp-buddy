@@ -19,7 +19,7 @@ const Home = () => {
       </Typography>
 
       <KpiCards />
-      <Charts />
+     <Charts/>
     </div>
   )
 }
