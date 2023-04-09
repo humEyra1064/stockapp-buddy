@@ -11,6 +11,8 @@ const KpiCards = () => {
   const totalSales = sales
     .map((item) => Number(item.price_total))
     .reduce((acc, val) => acc + val, 0)
+  
+
 
   const totalPurchases = purchases
     .map((item) => Number(item.price_total))
